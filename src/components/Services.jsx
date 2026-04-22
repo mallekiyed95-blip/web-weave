@@ -50,7 +50,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-32 px-6 md:px-12 bg-[#0a0a0a]" id="services">
+    <section className="py-32 px-6 md:px-12 bg-black" id="services">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20 space-y-4">
           <motion.span 

@@ -11,7 +11,7 @@ export default {
         display: ['Playfair Display', 'serif'],
       },
       colors: {
-        black: '#181818',
+        black: '#0a0a0a',
         white: '#FFFFFF',
       },
       animation: {
