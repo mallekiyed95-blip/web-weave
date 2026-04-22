@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import CurvedMarquee from './components/CurvedMarquee'
 import ProjectGrid from './components/ProjectGrid'
+import Services from './components/Services'
 import ProcessSection from './components/ProcessSection'
 import TechStack from './components/TechStack'
 import Footer from './components/Footer'
@@ -14,6 +15,7 @@ function App() {
       <Hero />
       <CurvedMarquee />
       <ProjectGrid />
+      <Services />
       <ProcessSection />
       <TechStack />
       <Footer />

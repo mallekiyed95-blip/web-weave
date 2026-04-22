@@ -43,7 +43,7 @@ const Navbar = () => {
       });
     }, observerOptions);
 
-    const sections = ['work', 'process', 'tech', 'contact'];
+    const sections = ['work', 'services', 'process', 'tech', 'contact'];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -58,6 +58,7 @@ const Navbar = () => {
 
   const navLinks = [
     { label: 'Work', href: '#work', id: 'work' },
+    { label: 'Services', href: '#services', id: 'services' },
     { label: 'Process', href: '#process', id: 'process' },
     { label: 'Stack', href: '#tech', id: 'tech' },
     { label: 'Contact', href: '#contact', id: 'contact' },
