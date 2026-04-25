@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const steps = [
   {
     number: "01",
@@ -18,25 +20,55 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-32 bg-black relative" id="process">
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="text-center mb-24">
-          <h2 className="text-4xl md:text-6xl font-display italic text-white uppercase tracking-tighter">THE ARCHITECTURE</h2>
-          <p className="text-gray-500 uppercase tracking-[0.2em] text-sm font-medium mt-4">How we build the future</p>
+    <section className="py-20 md:py-32 bg-black relative" id="process">
+      <div className="max-w-5xl mx-auto px-6 md:px-12">
+        <div className="text-center mb-16 md:mb-24">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-6xl font-display italic text-white uppercase tracking-tighter"
+          >
+            THE ARCHITECTURE
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-gray-500 uppercase tracking-[0.2em] text-[10px] md:text-sm font-medium mt-4"
+          >
+            How we build the future
+          </motion.p>
         </div>
+
         <div className="relative">
-          <div className="absolute left-1/2 -translate-x-1/2 w-px h-full bg-white/10"></div>
-          {steps.map((step, index) => (
-            <div key={index} className={`relative flex items-center justify-between mb-32 last:mb-0`}>
-              <div className={`w-[45%] ${index % 2 === 0 ? 'text-right pr-8 md:pr-12' : 'order-last text-left pl-8 md:pl-12'}`}>
-                <span className="text-6xl font-display font-light opacity-10 text-white italic leading-none">{step.number}</span>
-                <h4 className="text-xl font-display font-bold mt-2 text-white italic uppercase tracking-tighter">{step.title}</h4>
-                <p className="text-sm text-gray-500 mt-4 leading-relaxed font-light">{step.description}</p>
-              </div>
-              <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white z-10 border-4 border-black"></div>
-              <div className="w-[45%]"></div>
-            </div>
-          ))}
+          {/* Central line - hidden on mobile */}
+          <div className="absolute left-1/2 -translate-x-1/2 w-px h-full bg-white/10 hidden md:block"></div>
+          
+          <div className="flex flex-col gap-16 md:gap-32">
+            {steps.map((step, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className={`relative flex flex-col md:flex-row items-center justify-between`}
+              >
+                {/* Desktop layout: alternating sides */}
+                <div className={`w-full md:w-[45%] ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:order-last md:text-left md:pl-12'}`}>
+                  <span className="text-5xl md:text-6xl font-display font-light opacity-20 text-white italic leading-none">{step.number}</span>
+                  <h4 className="text-xl md:text-2xl font-display font-bold mt-2 text-white italic uppercase tracking-tighter">{step.title}</h4>
+                  <p className="text-sm md:text-base text-gray-500 mt-4 leading-relaxed font-light">{step.description}</p>
+                </div>
+
+                {/* Dot on central line - hidden on mobile */}
+                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white z-10 border-4 border-black hidden md:block"></div>
+                
+                <div className="hidden md:block md:w-[45%]"></div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -44,3 +76,4 @@ const ProcessSection = () => {
 };
 
 export default ProcessSection;
+
