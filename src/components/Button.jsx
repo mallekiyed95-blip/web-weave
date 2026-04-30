@@ -1,37 +1,67 @@
 import React from 'react';
 
-const Button = ({ 
-  children, 
-  href, 
-  className = "", 
-  variant = "primary", // primary, outline, text
-  ...props 
+const Button = ({
+  children,
+  href,
+  className = "",
+  variant = "primary",
+  isDark = false,
+  ...props
 }) => {
-  const baseStyles = "relative inline-flex items-center justify-center px-10 py-4 font-semibold uppercase tracking-widest text-xs transition-all duration-300 rounded-full border transform hover:opacity-90 active:scale-[0.98]";
-  
-  const variants = {
-    primary: "bg-forest text-cream border-forest hover:bg-charcoal hover:border-charcoal",
-    outline: "bg-transparent text-charcoal border-charcoal/40 hover:bg-charcoal hover:text-cream hover:border-charcoal",
-    text: "bg-transparent text-charcoal p-0 py-2 border-0 border-b-2 border-charcoal/10 hover:border-charcoal"
+  const baseStyles = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '14px 36px',
+    fontFamily: 'Inter, sans-serif',
+    fontWeight: 600,
+    fontSize: '11px',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+    borderRadius: '999px',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+    textDecoration: 'none',
+    whiteSpace: 'nowrap',
   };
+
+  const getVariantStyle = () => {
+    if (variant === 'primary') {
+      return {
+        backgroundColor: '#2A3B32',
+        color: '#F8F6F0',
+        border: '1.5px solid #2A3B32',
+      };
+    }
+    if (variant === 'outline') {
+      return {
+        backgroundColor: 'transparent',
+        color: isDark ? '#FFFFFF' : '#1C1C1C',
+        border: `1.5px solid ${isDark ? 'rgba(255,255,255,0.3)' : 'rgba(28,28,28,0.3)'}`,
+      };
+    }
+    return {
+      backgroundColor: 'transparent',
+      color: isDark ? '#FFFFFF' : '#1C1C1C',
+      border: 'none',
+      borderBottom: `1.5px solid ${isDark ? 'rgba(255,255,255,0.2)' : 'rgba(28,28,28,0.2)'}`,
+      borderRadius: '0',
+      padding: '4px 0',
+    };
+  };
+
+  const style = { ...baseStyles, ...getVariantStyle() };
 
   if (href) {
     return (
-      <a 
-        href={href} 
-        className={`${baseStyles} ${variants[variant]} ${className}`}
-        {...props}
-      >
+      <a href={href} style={style} className={className} {...props}>
         {children}
       </a>
     );
   }
 
   return (
-    <button 
-      className={`${baseStyles} ${variants[variant]} ${className}`}
-      {...props}
-    >
+    <button style={style} className={className} {...props}>
       {children}
     </button>
   );

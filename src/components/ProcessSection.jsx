@@ -18,54 +18,94 @@ const steps = [
   }
 ];
 
-const ProcessSection = () => {
+const ProcessSection = ({ isDark }) => {
+  const bg = isDark ? '#181818' : '#F8F6F0';
+  const fg = isDark ? '#FFFFFF' : '#1C1C1C';
+  const fgMuted = isDark ? '#9CA3AF' : '#6B7280';
+  const lineColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(28,28,28,0.10)';
+  const dotBg = isDark ? '#FFFFFF' : '#1C1C1C';
+  const dotBorder = bg;
+
   return (
-    <section className="py-20 md:py-32 bg-cream relative" id="process">
-      <div className="max-w-5xl mx-auto px-6 md:px-12">
-        <div className="text-center mb-16 md:mb-24">
-          <motion.h2 
+    <section id="process" style={{ backgroundColor: bg, padding: '100px 0' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px' }} className="md:px-12">
+        {/* Header — Playfair Display italic */}
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-display italic text-charcoal uppercase tracking-tighter"
+            className="font-display"
+            style={{ fontWeight: 700, fontSize: 'clamp(2.2rem, 5vw, 4rem)', textTransform: 'uppercase', color: fg, margin: 0, letterSpacing: '0.02em' }}
           >
-            THE ARCHITECTURE
+            The Architecture
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-gray-600 uppercase tracking-[0.2em] text-[10px] md:text-sm font-medium mt-4"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="font-sans"
+            style={{ fontWeight: 500, fontSize: '10px', letterSpacing: '0.3em', textTransform: 'uppercase', color: fgMuted, marginTop: '16px' }}
           >
             How we build the future
           </motion.p>
         </div>
 
-        <div className="relative">
-          {/* Central line - hidden on mobile */}
-          <div className="absolute left-1/2 -translate-x-1/2 w-px h-full bg-charcoal/10 hidden md:block"></div>
-          
-          <div className="flex flex-col gap-16 md:gap-32">
+        {/* Timeline */}
+        <div style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '1px', backgroundColor: lineColor, transform: 'translateX(-50%)' }} className="hidden md:block" />
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '80px' }}>
             {steps.map((step, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className={`relative flex flex-col md:flex-row items-center justify-between`}
+                transition={{ duration: 0.7, delay: index * 0.1 }}
+                style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
               >
-                {/* Desktop layout: alternating sides */}
                 <div className={`w-full md:w-[45%] ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:order-last md:text-left md:pl-12'}`}>
-                  <span className="text-5xl md:text-6xl font-display font-light opacity-20 text-charcoal italic leading-none">{step.number}</span>
-                  <h4 className="text-xl md:text-2xl font-display font-bold mt-2 text-charcoal italic uppercase tracking-tighter">{step.title}</h4>
-                  <p className="text-sm md:text-base text-gray-600 mt-4 leading-relaxed font-light">{step.description}</p>
+                  {/* Large number — Playfair Display faded */}
+                  <span className="font-display" style={{
+                    fontWeight: 400,
+                    fontSize: 'clamp(3rem, 7vw, 5.5rem)',
+                    color: isDark ? 'rgba(255,255,255,0.12)' : 'rgba(28,28,28,0.12)',
+                    lineHeight: 1,
+                    display: 'block',
+                  }}>
+                    {step.number}
+                  </span>
+                  {/* Step title — Playfair Display bold */}
+                  <h4 className="font-display" style={{
+                    fontWeight: 700,
+                    fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)',
+                    textTransform: 'uppercase',
+                    color: fg,
+                    margin: '8px 0 14px',
+                    letterSpacing: '0.02em',
+                  }}>
+                    {step.title}
+                  </h4>
+                  <p className="font-sans" style={{
+                    fontWeight: 400,
+                    fontSize: '14px',
+                    lineHeight: 1.7,
+                    color: fgMuted,
+                    margin: 0,
+                  }}>
+                    {step.description}
+                  </p>
                 </div>
 
-                {/* Dot on central line - hidden on mobile */}
-                <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-charcoal z-10 border-4 border-cream hidden md:block"></div>
-                
-                <div className="hidden md:block md:w-[45%]"></div>
+                <div className="hidden md:block" style={{
+                  position: 'absolute', left: '50%', top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '14px', height: '14px', borderRadius: '50%',
+                  backgroundColor: dotBg, border: `4px solid ${dotBorder}`, zIndex: 10,
+                }} />
+
+                <div className="hidden md:block md:w-[45%]" />
               </motion.div>
             ))}
           </div>
@@ -76,4 +116,3 @@ const ProcessSection = () => {
 };
 
 export default ProcessSection;
-

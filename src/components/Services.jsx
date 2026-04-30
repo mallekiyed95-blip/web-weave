@@ -1,118 +1,100 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Globe, 
-  Code2, 
-  Layers, 
-  Palette, 
-  Zap, 
-  ShieldCheck 
-} from 'lucide-react';
+import { Globe, Code2, Layers, Palette, Zap, ShieldCheck } from 'lucide-react';
 
-const services = [
-  {
-    title: "Web Design",
-    description: "Stunning visual experiences that capture your brand essence with editorial precision.",
-    icon: <Globe className="w-6 h-6 text-forest" />,
-    span: "md:col-span-2",
-  },
-  {
-    title: "Development",
-    description: "Clean, scalable code built with Next.js and architectural soul.",
-    icon: <Code2 className="w-6 h-6 text-forest" />,
-    span: "md:col-span-1",
-  },
-  {
-    title: "SaaS Products",
-    description: "End-to-end digital solutions from concept to launch with robust systems.",
-    icon: <Layers className="w-6 h-6 text-forest" />,
-    span: "md:col-span-1",
-  },
-  {
-    title: "Branding",
-    description: "Cohesive identities that tell your story across all touchpoints.",
-    icon: <Palette className="w-6 h-6 text-forest" />,
-    span: "md:col-span-1",
-  },
-  {
-    title: "Performance",
-    description: "Lightning-fast experiences optimized for speed and SEO mastery.",
-    icon: <Zap className="w-6 h-6 text-forest" />,
-    span: "md:col-span-1",
-  },
-  {
-    title: "Maintenance",
-    description: "Ongoing support to keep your digital presence thriving and secure.",
-    icon: <ShieldCheck className="w-6 h-6 text-forest" />,
-    span: "md:col-span-3",
-  },
+const SERVICES = [
+  { title: "Web Design", desc: "Stunning visual experiences that capture your brand essence with editorial precision.", icon: Globe, span: 2 },
+  { title: "Development", desc: "Clean, scalable code built with Next.js and architectural soul.", icon: Code2, span: 1 },
+  { title: "SaaS Products", desc: "End-to-end digital solutions from concept to launch with robust systems.", icon: Layers, span: 1 },
+  { title: "Branding", desc: "Cohesive identities that tell your story across all touchpoints.", icon: Palette, span: 1 },
+  { title: "Performance", desc: "Lightning-fast experiences optimized for speed and SEO mastery.", icon: Zap, span: 1 },
+  { title: "Maintenance", desc: "Ongoing support to keep your digital presence thriving and secure.", icon: ShieldCheck, span: 3 },
 ];
 
-const Services = () => {
+const Services = ({ isDark }) => {
+  const bg = isDark ? '#111111' : '#F8F6F0';
+  const fg = isDark ? '#FFFFFF' : '#1C1C1C';
+  const fgMuted = isDark ? '#9CA3AF' : '#6B7280';
+  const cardBg = isDark ? '#1C1C1C' : '#FFFFFF';
+  const borderColor = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(28,28,28,0.07)';
+  const iconBg = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(42,59,50,0.07)';
+
   return (
-    <section className="py-32 px-6 md:px-12 bg-cream" id="services">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-20 space-y-4">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
+    <section id="services" style={{ backgroundColor: bg, padding: '100px 0' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }} className="md:px-12">
+        {/* Header */}
+        <div style={{ marginBottom: '64px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[10px] uppercase tracking-[0.5em] text-gray-600 font-medium font-sans"
+            transition={{ duration: 0.5 }}
+            className="font-sans"
+            style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.45em', textTransform: 'uppercase', color: fgMuted, margin: 0 }}
           >
             Capabilities
-          </motion.span>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+          </motion.p>
+          {/* Display font (Playfair Display) for headline */}
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-display italic text-charcoal uppercase tracking-tight leading-[0.9]"
+            className="font-display"
+            style={{ fontWeight: 700, fontSize: 'clamp(2.5rem, 6vw, 5rem)', textTransform: 'uppercase', color: fg, margin: 0, lineHeight: 0.95, letterSpacing: '0.02em' }}
           >
             Our Services
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
-              className={`group relative p-8 rounded-3xl bg-white border border-charcoal/5 overflow-hidden shadow-lg shadow-charcoal/5 ${service.span} hover:border-forest/20 hover:shadow-[0_0_40px_-10px_rgba(42,59,50,0.1)] transition-all duration-500`}
-            >
-              {/* Outer Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-forest/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Glow Blur Backdrop */}
-              <div className="absolute -top-12 -right-12 w-40 h-40 bg-forest/5 blur-[80px] opacity-0 group-hover:opacity-100 transition-all duration-500" />
+        {/* Grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+          {SERVICES.map((service, i) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                style={{
+                  gridColumn: `span ${service.span}`,
+                  backgroundColor: cardBg,
+                  border: `1px solid ${borderColor}`,
+                  borderRadius: '24px',
+                  padding: '32px',
+                  boxShadow: isDark ? 'none' : '0 2px 20px rgba(28,28,28,0.04)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  cursor: 'default',
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  <div style={{
+                    width: '48px', height: '48px', borderRadius: '12px',
+                    backgroundColor: iconBg,
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <Icon size={22} style={{ color: '#2A3B32' }} />
+                  </div>
 
-              <div className="relative z-10 space-y-6">
-                <div className="w-12 h-12 rounded-xl bg-charcoal/5 border border-charcoal/10 flex items-center justify-center relative overflow-hidden group-hover:border-forest/20 transition-colors">
-                  <div className="absolute inset-0 bg-forest/5 blur-xl" />
-                  {service.icon}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {/* Card title: Playfair Display */}
+                    <h3 className="font-display" style={{ fontWeight: 700, fontSize: '22px', color: fg, margin: 0, letterSpacing: '0.01em' }}>
+                      {service.title}
+                    </h3>
+                    <p className="font-sans" style={{ fontWeight: 400, fontSize: '13.5px', lineHeight: 1.65, color: fgMuted, margin: 0, maxWidth: '300px' }}>
+                      {service.desc}
+                    </p>
+                  </div>
                 </div>
-                
-                <div className="space-y-3">
-                  <h3 className="text-2xl font-display italic text-charcoal tracking-wide">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-gray-600 font-sans max-w-xs transition-colors group-hover:text-charcoal">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
 
-              {/* Bottom Decoration */}
-              <div className="absolute bottom-4 right-4 text-[8px] uppercase tracking-widest text-charcoal/10 group-hover:text-forest/30 transition-colors">
-                Service // 0{index + 1}
-              </div>
-            </motion.div>
-          ))}
+                <span className="font-sans" style={{ position: 'absolute', bottom: '16px', right: '20px', fontSize: '9px', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(42,59,50,0.12)' }}>
+                  0{i + 1}
+                </span>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

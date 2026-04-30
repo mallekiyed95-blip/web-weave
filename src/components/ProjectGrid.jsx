@@ -22,60 +22,113 @@ const projects = [
   }
 ];
 
-const ProjectGrid = () => {
+const ProjectGrid = ({ isDark }) => {
+  const bg = isDark ? '#181818' : '#F8F6F0';
+  const fg = isDark ? '#FFFFFF' : '#1C1C1C';
+  const fgMuted = isDark ? '#9CA3AF' : '#6B7280';
+  const cardBg = isDark ? '#242424' : '#FFFFFF';
+  const borderColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(28,28,28,0.07)';
+
   return (
-    <section className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto bg-cream" id="work">
-      <div className="mb-12 md:mb-20">
-        <h2 className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-gray-600">Selected Works / 01-03</h2>
-      </div>
-      
-      <div className="flex flex-col gap-24 md:gap-[15vh]">
-        {projects.map((project, index) => (
-          <motion.div 
-            key={index} 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="group"
-          >
-            <div className="relative overflow-hidden aspect-[4/5] md:aspect-[16/9] bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-charcoal/5 border border-charcoal/5">
-              <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-1000 ease-out" 
-                />
-              </a>
-            </div>
-            
-            <div className="mt-8 md:mt-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-              <div className="space-y-3 md:space-y-4">
-                <h3 className="text-4xl md:text-7xl font-display italic text-charcoal leading-tight">{project.title}</h3>
-                <p className="text-gray-600 uppercase tracking-widest text-[10px] md:text-xs font-bold">{project.category}</p>
+    <section id="work" style={{ backgroundColor: bg, padding: '80px 0' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }} className="md:px-12">
+        <div style={{ marginBottom: '64px' }}>
+          <p className="font-sans" style={{
+            fontSize: '10px',
+            fontWeight: 600,
+            letterSpacing: '0.45em',
+            textTransform: 'uppercase',
+            color: fgMuted,
+          }}>
+            Selected Works / 01–03
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '96px' }}>
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {/* Clean image card */}
+              <div style={{
+                borderRadius: '16px',
+                overflow: 'hidden',
+                backgroundColor: cardBg,
+                border: `1px solid ${borderColor}`,
+                boxShadow: isDark ? 'none' : '0 4px 40px rgba(28,28,28,0.06)',
+                aspectRatio: '16/9',
+              }}>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" style={{ display: 'block', width: '100%', height: '100%' }}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'top center',
+                      display: 'block',
+                      transition: 'transform 0.8s ease',
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'}
+                    onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+                  />
+                </a>
               </div>
-              
-              <div className="w-full md:w-auto">
-                <Button 
+
+              {/* Meta row */}
+              <div style={{
+                marginTop: '28px',
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'space-between',
+                alignItems: 'flex-end',
+                gap: '20px',
+              }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {/* Title uses Playfair Display */}
+                  <h3 className="font-display" style={{
+                    fontWeight: 700,
+                    fontSize: 'clamp(2.2rem, 5vw, 5rem)',
+                    color: fg,
+                    margin: 0,
+                    lineHeight: 1,
+                    letterSpacing: '0.01em',
+                  }}>
+                    {project.title}
+                  </h3>
+                  <p className="font-sans" style={{
+                    fontWeight: 600,
+                    fontSize: '10px',
+                    letterSpacing: '0.3em',
+                    textTransform: 'uppercase',
+                    color: fgMuted,
+                    margin: 0,
+                  }}>
+                    {project.category}
+                  </p>
+                </div>
+
+                <Button
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  variant="outline"
-                  className="w-full md:w-auto"
+                  variant="primary"
+                  isDark={isDark}
                 >
-                  LIVE PREVIEW
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                  Live Preview →
                 </Button>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
 export default ProjectGrid;
-
