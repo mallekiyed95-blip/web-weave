@@ -11,8 +11,11 @@ export default {
         display: ['Playfair Display', 'serif'],
       },
       colors: {
-        black: '#181818',
-        white: '#FFFFFF',
+        black: '#1C1C1C', /* mapped to charcoal */
+        white: '#F8F6F0', /* mapped to cream */
+        cream: '#F8F6F0',
+        charcoal: '#1C1C1C',
+        forest: '#2A3B32'
       },
       animation: {
         'marquee': 'marquee 25s linear infinite',

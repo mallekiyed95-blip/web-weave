@@ -24,9 +24,9 @@ const projects = [
 
 const ProjectGrid = () => {
   return (
-    <section className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto bg-black" id="work">
+    <section className="py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto bg-cream" id="work">
       <div className="mb-12 md:mb-20">
-        <h2 className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-gray-500">Selected Works / 01-03</h2>
+        <h2 className="text-[10px] md:text-xs uppercase tracking-[0.5em] text-gray-600">Selected Works / 01-03</h2>
       </div>
       
       <div className="flex flex-col gap-24 md:gap-[15vh]">
@@ -39,7 +39,7 @@ const ProjectGrid = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="group"
           >
-            <div className="relative overflow-hidden aspect-[4/5] md:aspect-[16/9] bg-zinc-900 rounded-xl md:rounded-2xl overflow-hidden">
+            <div className="relative overflow-hidden aspect-[4/5] md:aspect-[16/9] bg-white rounded-xl md:rounded-2xl overflow-hidden shadow-2xl shadow-charcoal/5 border border-charcoal/5">
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
                 <img 
                   src={project.image} 
@@ -51,8 +51,8 @@ const ProjectGrid = () => {
             
             <div className="mt-8 md:mt-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
               <div className="space-y-3 md:space-y-4">
-                <h3 className="text-4xl md:text-7xl font-display italic text-white leading-tight">{project.title}</h3>
-                <p className="text-gray-400 uppercase tracking-widest text-[10px] md:text-xs font-bold">{project.category}</p>
+                <h3 className="text-4xl md:text-7xl font-display italic text-charcoal leading-tight">{project.title}</h3>
+                <p className="text-gray-600 uppercase tracking-widest text-[10px] md:text-xs font-bold">{project.category}</p>
               </div>
               
               <div className="w-full md:w-auto">

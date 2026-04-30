@@ -6,11 +6,11 @@ const Hero = () => {
   const dynamicWords = ["DIGITAL", "VISION", "FIX", "DIGITAL", "VISION", "FIX"];
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 pt-20 relative overflow-hidden bg-black">
+    <section className="min-h-screen flex flex-col justify-center items-center px-6 md:px-12 pt-20 relative overflow-hidden bg-cream">
       {/* Advanced Dot Grid Background */}
       <DotGrid 
-        baseColor="#2a2a2a" 
-        activeColor="#FFFFFF" 
+        baseColor="#EAE7DE" 
+        activeColor="#1C1C1C" 
         dotSize={8} 
         gap={48}
         className="opacity-60"
@@ -30,7 +30,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-8xl lg:text-9xl font-display leading-[1.1] md:leading-[1.2] text-white tracking-tight flex flex-col items-center justify-center"
+            className="text-4xl md:text-8xl lg:text-9xl font-display leading-[1.1] md:leading-[1.2] text-charcoal tracking-tight flex flex-col items-center justify-center"
           >
             <span className="block italic">WE ARCHITECT</span>
             <span className="dynamic-word-wrapper relative">
@@ -49,7 +49,7 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-gray-400 text-base md:text-xl max-w-xl mx-auto font-light leading-relaxed tracking-wide font-sans"
+          className="text-gray-600 text-base md:text-xl max-w-xl mx-auto font-light leading-relaxed tracking-wide font-sans"
         >
           Building sophisticated digital experiences through architectural precision and monochromatic soul.
         </motion.p>
