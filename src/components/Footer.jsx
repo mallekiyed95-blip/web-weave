@@ -53,19 +53,17 @@ const Footer = ({ isDark }) => {
   return (
     <footer id="contact" style={{ backgroundColor: bg }}>
       {/* CTA section */}
-      <div style={{ borderTop: `1px solid ${borderColor}`, padding: '100px 24px' }} className="md:px-12">
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '64px', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <div style={{ borderTop: `1px solid ${borderColor}` }} className="py-20 md:py-32 px-6 md:px-12">
+        <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-32 items-start">
 
           {/* Left */}
-          <div style={{ flex: '1 1 360px', display: 'flex', flexDirection: 'column', gap: '36px' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="flex-[1.2] flex flex-col gap-10">
+            <div className="flex flex-col gap-6">
               <span className="font-sans" style={{ fontWeight: 600, fontSize: '10px', letterSpacing: '0.45em', textTransform: 'uppercase', color: fgMuted }}>
                 Get in Touch
               </span>
-              {/* Playfair Display italic for the big CTA headline */}
-              <h2 className="font-display italic" style={{
+              <h2 className="font-display italic text-5xl md:text-7xl lg:text-8xl" style={{
                 fontWeight: 700,
-                fontSize: 'clamp(2.5rem, 6vw, 5rem)',
                 textTransform: 'uppercase',
                 color: fg,
                 margin: 0,
@@ -75,23 +73,20 @@ const Footer = ({ isDark }) => {
               </h2>
             </div>
 
-            <p className="font-sans" style={{ fontWeight: 400, fontSize: '15px', lineHeight: 1.7, color: fgMuted, margin: 0, maxWidth: '380px' }}>
+            <p className="font-sans text-base md:text-lg opacity-70" style={{ fontWeight: 400, lineHeight: 1.7, color: fgMuted, margin: 0, maxWidth: '420px' }}>
               Have a project in mind? We'd love to hear about it. Drop us a line and let's create something extraordinary.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              {/* Email link — Playfair Display for typographic weight */}
+            <div className="flex flex-col gap-8">
               <a
                 href="mailto:hello@webweave.com"
-                className="font-display"
-                style={{ fontWeight: 400, fontSize: 'clamp(1.1rem, 2vw, 1.6rem)', color: fg, textDecoration: 'none', transition: 'color 0.3s' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#2A3B32'}
-                onMouseLeave={e => e.currentTarget.style.color = fg}
+                className="font-display text-xl md:text-3xl hover:text-[#2A3B32] transition-colors duration-300"
+                style={{ fontWeight: 400, color: fg, textDecoration: 'none' }}
               >
                 hello@webweave.com
               </a>
 
-              <div style={{ display: 'flex', gap: '12px' }}>
+              <div className="flex gap-4">
                 {[
                   { href: "https://www.instagram.com/webweave.ui/", icon: <FaInstagram size={18} />, label: "Instagram" },
                   { href: "https://x.com/Abdosebri1", icon: <FaXTwitter size={18} />, label: "X" },
@@ -115,46 +110,47 @@ const Footer = ({ isDark }) => {
           </div>
 
           {/* Right: Contact form */}
-          <div style={{
-            flex: '1 1 420px',
+          <div className="w-full lg:flex-1" style={{
             backgroundColor: cardBg,
             border: `1px solid ${borderColor}`,
-            borderRadius: '24px',
-            padding: '48px',
-            boxShadow: isDark ? 'none' : '0 4px 40px rgba(28,28,28,0.06)',
+            borderRadius: '32px',
+            padding: '40px md:64px',
+            boxShadow: isDark ? 'none' : '0 10px 50px rgba(28,28,28,0.06)',
           }}>
-            <span className="font-sans" style={{ fontWeight: 600, fontSize: '10px', letterSpacing: '0.4em', textTransform: 'uppercase', color: fgMuted, display: 'block', marginBottom: '36px' }}>
-              Start a Project
-            </span>
+             <div className="p-2 md:p-8">
+                <span className="font-sans mb-10 block" style={{ fontWeight: 600, fontSize: '10px', letterSpacing: '0.4em', textTransform: 'uppercase', color: fgMuted }}>
+                  Start a Project
+                </span>
 
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-              {[
-                { label: 'Full Name', type: 'text', placeholder: 'John Doe' },
-                { label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
-              ].map(field => (
-                <div key={field.label}>
-                  <label style={labelStyle}>{field.label}</label>
-                  <input type={field.type} placeholder={field.placeholder} style={inputStyle} />
-                </div>
-              ))}
+                <form className="flex flex-col gap-8">
+                  {[
+                    { label: 'Full Name', type: 'text', placeholder: 'John Doe' },
+                    { label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
+                  ].map(field => (
+                    <div key={field.label} className="space-y-2">
+                      <label style={labelStyle}>{field.label}</label>
+                      <input type={field.type} placeholder={field.placeholder} style={inputStyle} className="focus:border-[#2A3B32]" />
+                    </div>
+                  ))}
 
-              <div>
-                <label style={labelStyle}>Project Details</label>
-                <textarea placeholder="Tell us about your project..." rows={4} style={{ ...inputStyle, resize: 'none' }} />
-              </div>
+                  <div className="space-y-2">
+                    <label style={labelStyle}>Project Details</label>
+                    <textarea placeholder="Tell us about your project..." rows={4} style={{ ...inputStyle, resize: 'none' }} className="focus:border-[#2A3B32]" />
+                  </div>
 
-              <Button variant="primary" isDark={isDark} style={{ width: '100%', justifyContent: 'center' }}>
-                Send Message
-              </Button>
-            </form>
+                  <Button variant="primary" isDark={isDark} className="w-full py-5">
+                    Send Message
+                  </Button>
+                </form>
+             </div>
           </div>
         </div>
       </div>
 
-      {/* Giant wordmark — Playfair Display, no glitch */}
-      <div style={{ borderTop: `1px solid ${borderColor}`, overflow: 'hidden', textAlign: 'center', padding: '64px 0' }}>
+      {/* Giant wordmark */}
+      <div style={{ borderTop: `1px solid ${borderColor}`, overflow: 'hidden', textAlign: 'center' }} className="py-20 md:py-32">
         <h3
-          className="font-display"
+          className="font-display px-4 text-[9vw] md:text-[18vw] lg:text-[20vw]"
           style={{
             fontWeight: 700,
             letterSpacing: '0.04em',
@@ -162,9 +158,9 @@ const Footer = ({ isDark }) => {
             color: fg,
             margin: 0,
             lineHeight: 0.85,
-            fontSize: 'clamp(4rem, 15vw, 18rem)',
             userSelect: 'none',
             whiteSpace: 'nowrap',
+            opacity: 0.9
           }}
         >
           Web Weave
@@ -172,12 +168,12 @@ const Footer = ({ isDark }) => {
       </div>
 
       {/* Bottom bar */}
-      <div style={{ borderTop: `1px solid ${borderColor}`, padding: '28px 24px' }} className="md:px-12">
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
-          <p className="font-sans" style={{ fontWeight: 400, fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: fgMuted, margin: 0 }}>
+      <div style={{ borderTop: `1px solid ${borderColor}` }} className="py-12 px-6 md:px-12">
+        <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
+          <p className="font-sans text-center md:text-left" style={{ fontWeight: 400, fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase', color: fgMuted, margin: 0 }}>
             © {new Date().getFullYear()} Web Weave. All rights reserved.
           </p>
-          <div style={{ display: 'flex', gap: '32px' }}>
+          <div className="flex flex-wrap justify-center gap-6 md:gap-10">
             {['Privacy Policy', 'Terms of Service', 'Sitemap'].map(link => (
               <a
                 key={link}

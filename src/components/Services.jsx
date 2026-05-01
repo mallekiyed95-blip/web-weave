@@ -45,7 +45,7 @@ const Services = ({ isDark }) => {
         </div>
 
         {/* Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {SERVICES.map((service, i) => {
             const Icon = service.icon;
             return (
@@ -56,8 +56,8 @@ const Services = ({ isDark }) => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                className={`${service.span === 2 ? 'md:col-span-2' : service.span === 3 ? 'md:col-span-3' : ''}`}
                 style={{
-                  gridColumn: `span ${service.span}`,
                   backgroundColor: cardBg,
                   border: `1px solid ${borderColor}`,
                   borderRadius: '24px',
@@ -67,6 +67,10 @@ const Services = ({ isDark }) => {
                   overflow: 'hidden',
                   cursor: 'default',
                   transition: 'all 0.3s ease',
+                  minHeight: '320px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between'
                 }}
               >
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -83,7 +87,7 @@ const Services = ({ isDark }) => {
                     <h3 className="font-display" style={{ fontWeight: 700, fontSize: '22px', color: fg, margin: 0, letterSpacing: '0.01em' }}>
                       {service.title}
                     </h3>
-                    <p className="font-sans" style={{ fontWeight: 400, fontSize: '13.5px', lineHeight: 1.65, color: fgMuted, margin: 0, maxWidth: '300px' }}>
+                    <p className="font-sans" style={{ fontWeight: 400, fontSize: '13.5px', lineHeight: 1.65, color: fgMuted, margin: 0, maxWidth: '100%' }}>
                       {service.desc}
                     </p>
                   </div>
