@@ -134,7 +134,7 @@ const Navbar = ({ isDark, onToggleTheme }) => {
         {/* ── Centered nav links ── */}
         <div
           className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-10"
-          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase' }}
+          style={{ fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 500, fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase' }}
         >
           {navLinks.map((link) => (
             <a
@@ -161,7 +161,7 @@ const Navbar = ({ isDark, onToggleTheme }) => {
             href="#contact"
             className="hidden md:flex items-center justify-center px-6 py-2.5 rounded-full text-xs font-medium uppercase tracking-wide transition-all duration-300 hover:opacity-90"
             style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: '"Plus Jakarta Sans", sans-serif',
               backgroundColor: '#2A3B32',
               color: '#F8F6F0',
               border: 'none',
@@ -196,7 +196,7 @@ const Navbar = ({ isDark, onToggleTheme }) => {
             style={{ backgroundColor: overlayBg }}
           >
             <div className="flex flex-col gap-8">
-              <p className="text-[10px] uppercase tracking-[0.5em] mb-4" style={{ color: fgMuted, fontFamily: 'Inter, sans-serif' }}>
+              <p className="text-[10px] uppercase tracking-[0.5em] mb-4" style={{ color: fgMuted, fontFamily: '"Plus Jakarta Sans", sans-serif' }}>
                 Navigation
               </p>
               {navLinks.map((link, i) => (
@@ -208,7 +208,7 @@ const Navbar = ({ isDark, onToggleTheme }) => {
                   onClick={() => setIsOpen(false)}
                   className="font-bold uppercase transition-colors"
                   style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: '"Plus Jakarta Sans", sans-serif',
                     fontSize: 'clamp(2rem, 8vw, 3.5rem)',
                     color: fg,
                     letterSpacing: '-0.02em',
@@ -224,16 +224,16 @@ const Navbar = ({ isDark, onToggleTheme }) => {
               style={{ borderTop: `1px solid ${borderColor}` }}
             >
               <div className="space-y-2">
-                <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: fgMuted, fontFamily: 'Inter, sans-serif' }}>
+                <p className="text-[10px] uppercase tracking-[0.3em]" style={{ color: fgMuted, fontFamily: '"Plus Jakarta Sans", sans-serif' }}>
                   Socials
                 </p>
-                <div className="flex gap-4 text-xs uppercase tracking-widest" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <div className="flex gap-4 text-xs uppercase tracking-widest" style={{ fontFamily: '"Plus Jakarta Sans", sans-serif' }}>
                   <a href="#" style={{ color: fg }} className="hover:opacity-50 transition-opacity">TW</a>
                   <a href="#" style={{ color: fg }} className="hover:opacity-50 transition-opacity">IG</a>
                   <a href="#" style={{ color: fg }} className="hover:opacity-50 transition-opacity">BE</a>
                 </div>
               </div>
-              <p className="text-[10px] uppercase tracking-widest" style={{ color: fgMuted, fontFamily: 'Inter, sans-serif' }}>©2024 Web Weave</p>
+              <p className="text-[10px] uppercase tracking-widest" style={{ color: fgMuted, fontFamily: '"Plus Jakarta Sans", sans-serif' }}>©2024 Web Weave</p>
             </div>
           </motion.div>
         )}

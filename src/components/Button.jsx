@@ -13,7 +13,7 @@ const Button = ({
     alignItems: 'center',
     justifyContent: 'center',
     padding: '14px 36px',
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: '"Plus Jakarta Sans", sans-serif',
     fontWeight: 600,
     fontSize: '11px',
     letterSpacing: '0.1em',
