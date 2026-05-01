@@ -150,17 +150,16 @@ const Footer = ({ isDark }) => {
       {/* Giant wordmark */}
       <div style={{ borderTop: `1px solid ${borderColor}`, overflow: 'hidden', textAlign: 'center' }} className="py-20 md:py-32">
         <h3
-          className="font-display px-4 text-[9vw] md:text-[18vw] lg:text-[20vw]"
+          className="font-display px-6 text-6xl md:text-[12vw] lg:text-[15vw]"
           style={{
             fontWeight: 700,
-            letterSpacing: '0.04em',
+            letterSpacing: '0.02em',
             textTransform: 'uppercase',
             color: fg,
             margin: 0,
-            lineHeight: 0.85,
+            lineHeight: 0.9,
             userSelect: 'none',
-            whiteSpace: 'nowrap',
-            opacity: 0.9
+            opacity: 0.8
           }}
         >
           Web Weave
