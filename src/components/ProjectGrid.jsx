@@ -9,16 +9,16 @@ const projects = [
     link: "https://hiiko.vercel.app/"
   },
   {
-    title: "NOCTURNE INDUSTRIES",
-    category: "Industrial Sci-Fi • Landing Page • 2024",
-    image: "/nocturne.png",
-    link: "https://techextract.vercel.app/"
+    title: "JAPON TOURS",
+    category: "Travel & Culture • Experience • 2024",
+    image: "/japon.png",
+    link: "https://japon-tours.vercel.app/"
   },
   {
-    title: "VADE",
-    category: "Creative Studio • Branding • 2024",
-    image: "/vade.png",
-    link: "https://vade-tau.vercel.app/"
+    title: "SHINOLA DETROIT",
+    category: "Lifestyle & Goods • E-Commerce • 2024",
+    image: "/aa.png",
+    link: "https://shinoladetroit.vercel.app/"
   }
 ];
 
